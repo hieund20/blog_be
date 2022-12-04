@@ -17,9 +17,9 @@ mongoose
 app.use(cors());
 app.use(express.json());
 
-const postRouter = require("./routes/post");
+const postRouter = require("../routes/post");
 app.use("/posts", postRouter);
-const categoryRouter = require("./routes/category");
+const categoryRouter = require("../routes/category");
 app.use("/categories", categoryRouter);
 
 app.listen(process.env.PORT || 3000, () => console.log("Server started"));
