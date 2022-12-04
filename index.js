@@ -21,7 +21,9 @@ function haltOnTimedout(req, res, next) {
 }
 
 mongoose
-  .connect(process.env.DATABASE_URL)
+  .connect(
+    "mongodb+srv://admin:ialkUYt71OZZU1Q9@cluster0.kd1ue.mongodb.net/?retryWrites=true&w=majority"
+  )
   .then(() => {
     console.log("Connected to DB");
     app.listen(process.env.PORT || 3000, () => console.log("Server started"));
