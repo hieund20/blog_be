@@ -6,15 +6,6 @@ const app = express();
 const mongoose = require("mongoose");
 const timeout = require("connect-timeout");
 
-mongoose
-  .connect(process.env.DATABASE_URL)
-  .then(() => {
-    console.log("Connected to DB");
-  })
-  .catch((err) => {
-    console.log("err", err);
-  });
-
 app.use(timeout("5s"));
 app.use(cors());
 app.use(express.json());
@@ -29,4 +20,12 @@ function haltOnTimedout(req, res, next) {
   if (!req.timedout) next();
 }
 
-app.listen(process.env.PORT || 3000, () => console.log("Server started"));
+mongoose
+  .connect(process.env.DATABASE_URL)
+  .then(() => {
+    console.log("Connected to DB");
+    app.listen(process.env.PORT || 3000, () => console.log("Server started"));
+  })
+  .catch((err) => {
+    console.log("err", err);
+  });
