@@ -22,4 +22,4 @@ app.use("/posts", postRouter);
 const categoryRouter = require("./routes/category");
 app.use("/categories", categoryRouter);
 
-app.listen(3000, () => console.log("Server started"));
+app.listen(process.env.PORT || 3000, () => console.log("Server started"));
